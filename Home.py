@@ -14,12 +14,10 @@ st.set_page_config("AlmyAI", initial_sidebar_state="collapsed", layout="wide")
 ps.set_title("AlmyAI", "Client Relations Assistant")
 ps.set_page_overview("Overview", "**Client Relations Assistant** provides a way to quickly ask about the troubleshooting for client relations")
 
-#2. Variable Setup
-
-openai.api_key = st.secrets.openai.api_key
-assistant = st.secrets.openai.assistant_key
-model = "gpt-4-1106-preview"
-client = OpenAI(api_key = st.secrets.openai.api_key)
+#1. Set Variables
+client = OpenAI(api_key=st.secrets.openai.api_key)
+assistantid = st.secrets.openai.assistant_key
+model = st.secrets.openai.assistant_model
 
 #3. Session State Management
 if "session_id" not in st.session_state: #used to identify each session
@@ -31,16 +29,16 @@ if "run" not in st.session_state: #stores the run state of the assistant
 if "messages" not in st.session_state: #stores messages of the assistant
     st.session_state.messages = []
     st.chat_message("assistant").markdown("I am your assistant. How may I help you?")
+
 if "retry_error" not in st.session_state: #used for error handling
     st.session_state.retry_error = 0
 
 #4. Openai setup
 if "assistant" not in st.session_state:
-    openai.api_key = st.secrets.openai.api_key
-
-    # Load the previously created assistant
-    st.session_state.assistant = openai.beta.assistants.retrieve(st.secrets["OPENAI_ASSISTANT_KEY"])
-
+    st.session_state.assistant = client.beta.assistants.retrieve(
+        assistant_id=assistantid
+    )
+    
     # Create a new thread for this session
     st.session_state.thread = client.beta.threads.create(
         metadata={
@@ -48,7 +46,9 @@ if "assistant" not in st.session_state:
         }
     )
 
-# If the run is completed, display the messages
+    st.session_state.threadid = st.session_state.thread.id
+
+    # If the run is completed, display the messages
 elif hasattr(st.session_state.run, 'status') and st.session_state.run.status == "completed":
     # Retrieve the list of messages
     st.session_state.messages = client.beta.threads.messages.list(
@@ -138,4 +138,3 @@ if hasattr(st.session_state.run, 'status'):
         if st.session_state.retry_error < 3:
             time.sleep(3)
             st.rerun()
-
