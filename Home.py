@@ -19,7 +19,7 @@ ps.set_page_overview("Overview", "**Client Relations Assistant** provides a way 
 openai.api_key = st.secrets.openai.api_key
 assistant = st.secrets.openai.assistant_key
 model = "gpt-4-1106-preview"
-client = OpenAI()
+client = OpenAI(api_key = st.secrets.openai.api_key)
 
 #3. Session State Management
 if "session_id" not in st.session_state: #used to identify each session
