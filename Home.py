@@ -16,6 +16,7 @@ ps.set_page_overview("Overview", "**Client Relations Assistant** provides a way 
 
 
 st.selectbox("Select Device", ("Harmony XL Pro", "Soprano Ice"))
+st.divider()
 
 #1. Set Variables
 client = OpenAI(api_key=st.secrets.openai.api_key)
