@@ -10,9 +10,8 @@ import uuid
 #0. Page Config
 st.set_page_config("AlmyAI", initial_sidebar_state="collapsed", layout="wide")
 
-if not st.session_state.get("auth", False):
-    lg.show_login_button()
-else:
+if lg.check_authentication():
+    
 
     ps.set_title("AlmyAI", "Client Relations Assistant")
     ps.set_page_overview("Overview", "**Client Relations Assistant** provides a way to quickly ask about the troubleshooting for client relations")
