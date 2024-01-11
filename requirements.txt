@@ -45,3 +45,5 @@ opencv-python
 Pillow
 streamlit-aggrid
 pygwalker
+streamlit-oauth
+msal-streamlit-authentication
