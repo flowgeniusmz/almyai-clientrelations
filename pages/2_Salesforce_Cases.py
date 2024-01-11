@@ -7,7 +7,7 @@ import streamlit_modal as modal
 # Function to fetch cases from Salesforce
 @st.cache
 def fetch_cases():
-    sf = Salesforce(username=st.secrets.salesforce.sfUsername, password=st.secrets.salesforce.sfPassword, security_token=st.secrets.salesforce.sfToken)
+    sf = Salesforce(username=st.secrets.salesforce.sfuser, password=st.secrets.salesforce.sfcred, security_token=st.secrets.salesforce.sfToken)
     query = """
         SELECT Id, AccountId, Account.Name, Account.ShippingStreet, Account.ShippingCity,
         Account.ShippingState, Account.ShippingPostalCode, Account.ShippingLongitude,
