@@ -5,7 +5,9 @@ from msal_streamlit_authentication import msal_authentication
 from datetime import datetime
 import random
 
-
+if "auth" not in st.session_state:
+    st.session_state["auth"] = False
+    
 def get_loginform():
     client = login_form("FEOC Authentication", allow_guest=False)
 
