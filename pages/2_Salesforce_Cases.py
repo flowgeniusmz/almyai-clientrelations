@@ -13,7 +13,7 @@ def fetch_cases():
         SELECT Id, AccountId, Account.Name, Account.ShippingStreet, Account.ShippingCity,
         Account.ShippingState, Account.ShippingPostalCode, Account.ShippingLongitude,
         Account.ShippingLatitude, Type, Status, Queues__c, Owner.Name, CreatedDate 
-        FROM Case Where Account.Subsidiary__c = 'Alma Lasers , Inc.' AND Status = 'In Progress'
+        FROM Case Where Account.Subsidiary__c = 'Alma Lasers , Inc.' AND Status = 'In Progress' AND Queues__c = 'Client Relations'
         ORDER BY CreatedDate DESC 
         LIMIT 200
         """
