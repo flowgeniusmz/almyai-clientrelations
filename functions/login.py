@@ -45,6 +45,14 @@ def generate_varKey():
     
     return varKey
 
+def check_login():
+    if "auth" not in st.session_state:
+        st.session_state.auth = False
+        return False
+    elif not st.session_state.auth:
+        return False
+    else
+        return True
 
 def get_msal_login_token():
     varAuth = {
