@@ -28,7 +28,8 @@ def check_authentication():
         bool: True if authenticated, False otherwise.
     """
     if "authenticated" not in st.session_state:
-        get_loginform()
+        #get_loginform()
+        show_login_button()
         return False
     return True
 #https://app.supabase.com/project/rbaawqpeyigwmzukrmvc/editor/28594
