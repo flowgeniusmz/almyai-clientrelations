@@ -94,3 +94,7 @@ def get_msal_login_token():
     else:
         st.session_state["auth"] = False
         st.error("Login failed")
+
+def show_login_button():
+    if st.button("Login with Microsoft"):
+        get_msal_login_token()
