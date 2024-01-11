@@ -89,6 +89,7 @@ def get_msal_login_token():
         logout_button_text=varLogoutButtonText, 
         key=varKey
     )
+    st.write(login_token)
     if login_token:
         st.session_state.authenticated = True
         st.success("Login successful")
