@@ -90,10 +90,10 @@ def get_msal_login_token():
         key=varKey
     )
     if login_token:
-        st.session_state["auth"] = True
+        st.session_state.authenticated = True
         st.success("Login successful")
     else:
-        st.session_state["auth"] = False
+        st.session_state.authenticated = False
         st.error("Login failed")
 
 def show_login_button():
