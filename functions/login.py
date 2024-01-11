@@ -29,7 +29,7 @@ def check_authentication():
     """
     if "authenticated" not in st.session_state:
         #get_loginform()
-        show_login_button()
+        get_msal_login_token()
         return False
     return True
 #https://app.supabase.com/project/rbaawqpeyigwmzukrmvc/editor/28594
