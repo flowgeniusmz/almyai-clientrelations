@@ -5,14 +5,15 @@ import functions.pagesetup as ps
 import functions.login as lg
 from openai import OpenAI
 import uuid
-from functions import login as lg
+
 
 #0. Page Config
 st.set_page_config("AlmyAI", initial_sidebar_state="collapsed", layout="wide")
 
-if not lg.check_login():
-    lg.get_msal_login_token()  # Display login form
+if not st.session_state.get("auth", False):
+    lg.show_login_button()
 else:
+
     ps.set_title("AlmyAI", "Client Relations Assistant")
     ps.set_page_overview("Overview", "**Client Relations Assistant** provides a way to quickly ask about the troubleshooting for client relations")
     
