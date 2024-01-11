@@ -71,7 +71,7 @@ def show_case_modal(case):
 
 def generate_row(row_id, case):
     row_container = st.empty()
-    row_columns = row_container.columns((2, 2, 1, 1, 1, 1))
+    row_columns = row_container.columns((2, 2, 1, 1, 1, 1, 1))
     row_columns[0].write(case['accountname'])
     row_columns[1].write(case['accountid'])
     row_columns[2].write(case['type'])
@@ -79,7 +79,7 @@ def generate_row(row_id, case):
     row_columns[4].write(case['queue'])
     row_columns[5].write(case['owner'])
 
-    if row_columns[5].button("Details", key=f"btn_{row_id}"):
+    if row_columns[6].button("Details", key=f"btn_{row_id}"):
         show_case_modal(case)
 
 def main():
@@ -88,13 +88,14 @@ def main():
     ps.set_blue_header("Case List")
     headercontainer = st.container()
     with headercontainer:
-        header_columns = st.columns((2, 2, 1, 1, 1, 1))
+        header_columns = st.columns((2, 2, 1, 1, 1, 1,1))
         header_columns[0].markdown("**Account Name**")
         header_columns[1].markdown("**Account Id**")
         header_columns[2].markdown("**Case Type**")
         header_columns[3].markdown("**Case Status**")
         header_columns[4].markdown("**Case Queue**")
         header_columns[5].markdown("**Case Owner**")
+        header_columns[6].markdown("**Details**")
     st.divider()
 
     cases_df = fetch_cases()
