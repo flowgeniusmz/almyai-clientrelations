@@ -84,4 +84,5 @@ def get_msal_login_token():
         key=varKey
     )
     st.write("token received", login_token)
+    st.session_state.auth = True
     #   return login_token
