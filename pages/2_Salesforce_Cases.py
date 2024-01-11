@@ -79,7 +79,7 @@ def generate_row(row_id, case):
     row_columns[4].write(case['queue'])
     row_columns[5].write(case['owner'])
 
-    if row_columns[6].button("Details", key=f"btn_{row_id}"):
+    if row_columns[6].button("Details", key=f"btn_{row_id}", type="primary"):
         show_case_modal(case)
 
 def main():
