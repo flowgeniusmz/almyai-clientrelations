@@ -51,7 +51,7 @@ def check_login():
         return False
     elif not st.session_state.auth:
         return False
-    else
+    else:
         return True
 
 def get_msal_login_token():
