@@ -3,6 +3,7 @@ import pandas as pd
 from simple_salesforce import Salesforce
 import uuid
 import streamlit_modal as modal
+from functions import pagesetup as ps
 
 # Function to fetch cases from Salesforce
 @st.cache
@@ -82,7 +83,19 @@ def generate_row(row_id, case):
         show_case_modal(case)
 
 def main():
-    st.title("Salesforce Case Manager")
+    ps.set_title("Client Relations", "Salesforce Case Manager")
+    ps.set_page_overview("Overview", "The **Salesforce Case Manager** page enables you to view all **in process, technical service, client relations** cases assigned to you. You can view and edit the details and the case will automatically be updated in Salesforce.")
+    ps.set_blue_header("Case List")
+    headercontainer = st.container()
+    with headercontainer:
+        header_columns = st.columns((2, 2, 1, 1, 1, 1))
+        header_columns[0].markdown("**Account Name**")
+        header_columns[1].markdown("**Account Id**")
+        header_columns[2].markdown("**Case Type**")
+        header_columns[3].markdown("**Case Status**")
+        header_columns[4].markdown("**Case Queue**")
+        header_columns[5].markdown("**Case Owner**")
+    st.divider()
 
     cases_df = fetch_cases()
 
