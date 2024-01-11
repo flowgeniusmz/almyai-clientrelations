@@ -56,9 +56,9 @@ def check_login():
 
 def get_msal_login_token():
     varAuth = {
-        "clientId": "cb42cf75-3878-4eb6-b203-3147b862ae3f",
-        "authority": "https://login.microsoftonline.com/eb998ecc-cd25-4963-ad28-6e2a1171f9f6", 
-        "redirectUri": "http://localhost:8502/Test"#"https://feoc-dev.streamlit.app/auth_redirect",
+        "clientId": "25e5c5fd-9ba1-4d2e-8936-0b328a42fab2",
+        "authority": "https://login.microsoftonline.com/63ad517e-620a-4ee0-a614-b6bdde377b13", 
+        "redirectUri": "https://clientrelations.streamlit.app/auth_redirect",
         #"postLogoutRedirectUri": "https://feoc-dev.streamlit.app/"  # Or another URI where you handle post-logout navigation
     }
     varCache = {
@@ -66,7 +66,7 @@ def get_msal_login_token():
         "storeAuthStateInCookie": False
     }
     varLoginRequests = {
-        "scopes": ["cb42cf75-3878-4eb6-b203-3147b862ae3f/.default"]
+        "scopes": ["api://25e5c5fd-9ba1-4d2e-8936-0b328a42fab2/.default"]
     }
     varLogoutRequests = {} #optional
     varLoginButtonText = "Login"
