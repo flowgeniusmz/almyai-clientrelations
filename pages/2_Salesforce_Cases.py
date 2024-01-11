@@ -87,7 +87,7 @@ def main():
     ps.set_title("Client Relations", "Salesforce Case Manager")
     ps.set_page_overview("Overview", "The **Salesforce Case Manager** page enables you to view all **in process, technical service, client relations** cases assigned to you. You can view and edit the details and the case will automatically be updated in Salesforce.")
     ps.set_blue_header("Case List")
-    st.divider()
+    #st.divider()
     headercontainer = st.container()
     with headercontainer:
         header_columns = st.columns((2, 2, 1, 1, 1, 1,1))
